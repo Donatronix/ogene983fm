@@ -44,3 +44,7 @@ Route::get('/clear-cache', function () {
     }
     return redirect()->route('home');
 });
+
+Route::get('/test', function () {
+    echo str_replace("ogene983fm", "public_html", base_path());
+});

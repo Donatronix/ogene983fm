@@ -31,7 +31,7 @@
                 </form>
                 @endguest
                 @auth
-                @role('admin|super admin')
+                @role('admin|super admin|presenter')
                 <a href="{{ route('dashboard') }}" class="login-panel"><i class="fa fa-briefcase"></i>Dashboard</a>
                 @endrole
                 @endauth

@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+        <meta name="description" content="Ogene983FM Best indigenous Radio Station, South-East of the Niger. Infusing Local content, reaching out to upwardly mobile and locals. Bridging the gap between the urban contemporary and Indigenous broadcasting">
         <!-- Favicon -->
         <link href="{{ asset('images/logo.png') }}" rel="shortcut icon" />
         <!-- Twitter meta-->
@@ -11,11 +11,11 @@
         <meta property="twitter:creator" content="@ogenefm983">
         <!-- Open Graph Meta-->
         <meta property="og:type" content="website">
-        <meta property="og:site_name" content="Vali Admin">
-        <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+        <meta property="og:site_name" content="Ogene 98.3.FM">
+        <meta property="og:title" content="Ogene 98.3.FM">
         <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
         <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
-        <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+        <meta property="og:description" content="Ogene983FM Best indigenous Radio Station, South-East of the Niger. Infusing Local content, reaching out to upwardly mobile and locals. Bridging the gap between the urban contemporary and Indigenous broadcasting">
         <title>Ogene98.3FM Dashboard </title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

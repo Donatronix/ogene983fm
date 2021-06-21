@@ -28,10 +28,15 @@
              </ul>
          </li>
          @endrole
+         @role('admin')
          <li><a class="app-menu__item" href="{{ route('contact.dashboard') }}"><i class="app-menu__icon fa fa-comment"></i><span class="app-menu__label">Messages</span></a></li>
          <li>
              <a class="app-menu__item" href="{{ route('category.dashboard') }}"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Categories</span></a>
          </li>
+         <li><a class="app-menu__item" href="{{ route('newsletter.dashboard') }}"><i class="app-menu__icon fa fa-pencil"></i><span class="app-menu__label">Newsletters</span></a></li>
+         @endrole
+
+         @role('presenter|admin')
          <li>
              <a class="app-menu__item" href="{{ route('discussion.dashboard') }}"><i class="app-menu__icon fa fa-file"></i><span class="app-menu__label">Today's Show</span></a>
          </li>
@@ -50,7 +55,8 @@
          <li>
              <a class="app-menu__item" href="{{ route('post.dashboard') }}"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Posts</span></a>
          </li>
-         <li><a class="app-menu__item" href="{{ route('newsletter.dashboard') }}"><i class="app-menu__icon fa fa-pencil"></i><span class="app-menu__label">Newsletters</span></a></li>
+         @endrole
+
 
      </ul>
  </aside>

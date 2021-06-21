@@ -24,6 +24,7 @@ Login
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
+                @include('errors.list')
                 <div class="login-form">
                     <h2>Login</h2>
                     <form method="POST" action="{{ route('login') }}">
@@ -65,7 +66,7 @@ Login
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="mb-0 form-group row">
                             <div class="col-md-12">
                                 <button type="submit" class="site-btn login-btn">{{ __('Login') }}</button>
                                 @if (Route::has('password.request'))

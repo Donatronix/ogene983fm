@@ -1,17 +1,17 @@
 @extends('layouts.dashboard.form-components')
 @section('title')
-New Programme
+New Presenter
 @endsection
 
 @section('content')
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-edit"></i> Programmes</h1>
+            <h1><i class="fa fa-edit"></i> Presenters</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Programmes</li>
+            <li class="breadcrumb-item">Presenters</li>
             <li class="breadcrumb-item">{{ $presenter->name }}</li>
             <li class="breadcrumb-item"><a href="">Edit</a></li>
         </ul>
@@ -21,7 +21,7 @@ New Programme
             <div class="tile">
                 <div class="row">
                     <div class="container">
-                        <form action="{{ route('programme.update', ['programme' => $programme->slug]) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('presenter.update', ['presenter' => $presenter->slug]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group">

@@ -24,6 +24,7 @@ Register
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
+                @include('errors.list')
                 <div class="register-form">
                     <h2>Register</h2>
                     <form method="POST" action="{{ route('register') }}">
@@ -57,7 +58,7 @@ Register
                         </div>
                         <div class="group-input">
                             <label for="pass">Password *</label>
-                            <input type="text" id="password" name="password" required>
+                            <input type="password" id="password" name="password" required>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -66,7 +67,7 @@ Register
                         </div>
                         <div class="group-input">
                             <label for="password_confirmation">Confirm Password *</label>
-                            <input type="text" id="password_confirmation" name="password_confirmation" required>
+                            <input type="password" id="password_confirmation" name="password_confirmation" required>
                         </div>
                         <button type="submit" class="site-btn register-btn">REGISTER</button>
                     </form>

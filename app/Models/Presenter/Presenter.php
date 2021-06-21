@@ -7,6 +7,7 @@ use App\Traits\AboutTrait;
 use App\Traits\Taggable;
 use App\Traits\UploadImage;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;
@@ -48,7 +49,7 @@ class Presenter extends Model implements Searchable
     use Taggable;
     use UploadImage;
 
-    protected $fillable = ['title'];
+    protected $fillable = ['name'];
 
     /**
      * Get the options for generating the slug.
@@ -56,7 +57,7 @@ class Presenter extends Model implements Searchable
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('title')
+            ->generateSlugsFrom('name')
             ->saveSlugsTo('slug')
             ->slugsShouldBeNoLongerThan(255);
     }
@@ -71,6 +72,11 @@ class Presenter extends Model implements Searchable
         return 'slug';
     }
 
+    /**
+     * Get search result
+     *
+     * @return \Spatie\Searchable\SearchResult
+     */
     public function getSearchResult(): SearchResult
     {
         $url = route('presenter.show', $this->slug);
@@ -81,12 +87,17 @@ class Presenter extends Model implements Searchable
         );
     }
 
-    public function programmes()
+/**
+ * Get programmes
+ *
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+ */
+    public function programmes():BelongsToMany
     {
         return $this->belongsToMany(Programme::class);
     }
 
-    public function getContentAttribute()
+    public function getContentAttribute(
     {
         return $this->about;
     }
