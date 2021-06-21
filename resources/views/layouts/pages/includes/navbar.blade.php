@@ -55,11 +55,13 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div style="margin-bottom:30px;">
-                        <audio controls loop autoplay>
-                            <source src="https://freeuk24.listen2myradio.com/live.mp3?typeportmount=s1_5959_stream_574206492" type="audio/mp3">
-                            Your browser dose not Support the audio player.<br />
-                            Please upgrade your browser to enjoy our content.
-                        </audio>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a class="btn btn-danger btn-lg" href="https://ogene983fm.radio12345.com/">
+                                    Listen live <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="advanced-search" style="width:100%;">

@@ -33,7 +33,7 @@
              <a class="app-menu__item" href="{{ route('category.dashboard') }}"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Categories</span></a>
          </li>
          <li>
-             <a class="app-menu__item" href="{{ route('discussion.dashboard') }}"><i class="app-menu__icon fa fa-file"></i><span class="app-menu__label">Discussions</span></a>
+             <a class="app-menu__item" href="{{ route('discussion.dashboard') }}"><i class="app-menu__icon fa fa-file"></i><span class="app-menu__label">Today's Show</span></a>
          </li>
          <li>
              <a class="app-menu__item" href="{{ route('gallery.album.dashboard') }}"><i class="app-menu__icon fa fa-camera"></i><span class="app-menu__label">Gallery</span></a>

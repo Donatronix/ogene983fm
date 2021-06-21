@@ -8,6 +8,9 @@ use App\Models\Programme\Programme;
 use App\Traits\AboutTrait;
 use App\Traits\UploadImage;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -15,8 +18,6 @@ use Laravelista\Comments\Commenter;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 
 /**
  * App\Models\User
@@ -114,6 +115,11 @@ class User extends Authenticatable implements Searchable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Boot function
+     *
+     * @return void
+     */
     protected static function boot()
     {
         parent::boot();
@@ -154,68 +160,132 @@ class User extends Authenticatable implements Searchable
         );
     }
 
-    public function programmes()
+    /**
+     * Get programmes
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function programmes(): BelongsToMany
     {
         return $this->belongsToMany(Programme::class);
     }
 
-    public function posts()
+    /**
+     * get posts
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class, 'presenter_id');
     }
 
-    public function metroArticles()
+    /**
+     * Get metro articles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function metroArticles(): HasMany
     {
         return $this->hasMany(Metro::class, 'user_id');
     }
 
-    public function getIsAdminAttribute()
+    /**
+     * Check if administrator
+     *
+     * @return boolean
+     */
+    public function getIsAdminAttribute(): bool
     {
         return (bool) $this->hasRole('admin');
     }
 
-    public function getIsSuperAdminAttribute()
+    /**
+     * Check if super administrator
+     *
+     * @return boolean
+     */
+    public function getIsSuperAdminAttribute(): bool
     {
         return (bool) $this->hasRole('super admin');
     }
 
-    public function getIsPresenterAttribute()
+    /**
+     * Check if presenter
+     *
+     * @return boolean
+     */
+    public function getIsPresenterAttribute(): bool
     {
         return (bool) $this->hasRole('presenter');
     }
 
-    public function getIsFanAttribute()
+    /**
+     * Check if a fan
+     *
+     * @return boolean
+     */
+    public function getIsFanAttribute(): bool
     {
         return (bool) $this->hasRole('fan');
     }
 
-    public function getIsOwnerAttribute()
+    /**
+     * Check if owner
+     *
+     * @return boolean
+     */
+    public function getIsOwnerAttribute(): bool
     {
         return auth()->user()->id == $this->user->id;
     }
 
-    public function scopeAdmins($query)
+    /**
+     * Scope a query to only include admins
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeAdmins($query): Builder
     {
         return $query->whereHas('roles', function ($query) {
             $query->where('roles.name', 'admin');
         });
     }
 
-    public function scopeSuperAdmins($query)
+    /**
+     * Scope a query to only include super admins
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSuperAdmins($query): Builder
     {
         return $query->whereHas('roles', function ($query) {
             $query->where('roles.name', 'super admin');
         });
     }
 
-    public function scopeFans($query)
+    /**
+     * Scope a query to only include fans
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFans($query): Builder
     {
         return $query->whereHas('roles', function ($query) {
             $query->where('roles.name', 'fan');
         });
     }
 
-    public function scopePresenters($query)
+    /**
+     * Scope a query to only include presenters
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePresenters($query): Builder
     {
         return $query->whereHas('roles', function ($query) {
             $query->where('roles.name', 'presenter');
