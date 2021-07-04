@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -72,6 +71,8 @@ class RegisterController extends Controller
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $role_r = Role::where('name', '=', 'fan')->firstOrFail();
+        $user->assignRole($role_r); //Assigning role to user
         return $user;
     }
 }

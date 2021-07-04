@@ -15,15 +15,14 @@ trait UploadAble
 
     private $rootFolder;
 
-
     /**
      * @param UploadedFile $file
      * @param null $folder
      * @param string $disk
      * @param null $filename
-     * @return false|string
+     * @return string|false
      */
-    public function uploadFile(UploadedFile $file, $folder = null, $filename = null, $disk = 'public')
+    public function uploadFile(UploadedFile $file, $folder = null, $filename = null)
     {
         $name =  $filename ?? Str::random(25);
         $extension = $file->getClientOriginalExtension();
@@ -36,23 +35,37 @@ trait UploadAble
             }
         }
         $name = $tempName . "." . $extension;
-        return $file->storeAs(
-            $folder,
-            $name,
-            $disk
-        );
+
+        $path
+            = $file->move($this->setFolder($folder), $name);
+        return str_replace($_SERVER['DOCUMENT_ROOT'] . "/media/", "", $path);
     }
 
     /**
-     * @param null $path
+     * Deletefile
+     *
+     * @param string $path
+     *
+     * @return boolean
      */
-    public function deleteFile($path = null)
+    public function deleteFile(string $path = null): bool
     {
         $path = \str_replace(asset(''), '', $path);
-        return unlink($this->setFolder($path));
+        $path = $this->setFolder($path);
+        if (file_exists($path)) {
+            return unlink($path);
+        }
+        return false;
     }
 
-    public function deleteFolder($path = null)
+    /**
+     * Delete folder
+     *
+     * @param string $path
+     *
+     * @return boolean
+     */
+    public function deleteFolder(string $path = null): bool
     {
         return File::deleteDirectory($this->setFolder($path));
     }
@@ -68,12 +81,11 @@ trait UploadAble
     /**
      * Set the value of rootFolder
      *
-     * @return  self
+     * @return  string
      */
-    public function setFolder($path)
+    public function setFolder(string $path): string
     {
-        $sharedHostPath = base_path("public_html/media/$path");
-        $this->rootFolder = file_exists(base_path("public_html")) ? $sharedHostPath : public_path("media/$path");
-        return $this;
+        $this->rootFolder = $_SERVER['DOCUMENT_ROOT'] . "/media/" . $path;
+        return $this->rootFolder;
     }
 }

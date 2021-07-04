@@ -25,58 +25,20 @@ $helper= new Helper;
         </div>
         <div class="clearfix"></div>
         <div class="col-md-3">
-            <div class="tile p-0">
+            <div class="p-0 tile">
                 <ul class="nav flex-column nav-tabs user-tabs">
-                    <li class="nav-item"><a class="nav-link active" href="#user-timeline" data-toggle="tab">Timeline</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#user-settings" data-toggle="tab">Settings</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="#user-settings" data-toggle="tab">Settings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#user-timeline" data-toggle="tab">Timeline</a></li>
                 </ul>
             </div>
         </div>
         <div class="col-md-9">
             <div class="tab-content">
-                <div class="tab-pane active" id="user-timeline">
-                    <div class="timeline-post">
-                        <div class="post-content">
-                            <h2 class="line-head">Platforms</h2>
-                            <div class="row">
-                                @forelse ($items as $item)
-                                <div class="col-md-6 col-lg-4 equalHeight mb-4">
-                                    <div class="widget-small primary coloured-icon">
-                                        @isset($item['image'])
-                                        <img src="{{ $item['image'] }}" alt="" class="icon img-responsive equalHeight" style="width:35%;">
-                                        @else
-                                        <i class="icon fa fa-users fa-3x equalHeight" style="width:35%;"></i>
-                                        @endisset
-                                        <div class="info">
-                                            <h4 style="text-transform: none;">{{ $item['title'] }}</h4>
-                                            <p><b>{!! $item['count'] !!}</b></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @empty
-                                <div class="col-md-12">
-                                    <p> You have not uploaded anything on any of our platforms.</p>
-                                </div>
-                                @endforelse
-                            </div>
-                            @if(count($charts) > 0)
-                            <div class="row py-3 px-3">
-                                @foreach ($charts as $chart)
-                                <div class="col-md-6">
-                                    {!! $chart->container() !!}
-                                </div>
-                                @endforeach
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="user-settings">
+                <div class="tab-pane active" id="user-settings">
                     <div class="tile user-settings">
                         <h2 class="line-head">Profile Settings</h2>
                         <div>
-                            <div class="row mb-4">
+                            <div class="mb-4 row">
                                 <div class="col-md-12">
                                     <label>About</label>
                                     <p>{!! nl2br($user->about )!!}</p>
@@ -85,7 +47,7 @@ $helper= new Helper;
                                 </div>
                             </div>
 
-                            <div class="row mb-4">
+                            <div class="mb-4 row">
                                 @if ($user->isExpert)
                                 @if ($user->registration)
                                 <div class="col-md-4">
@@ -175,7 +137,7 @@ $helper= new Helper;
                             <div class="row">
                                 @if ($user->isExpert)
                                 @isset($user->journals)
-                                <div class="col-md-8 mb-4">
+                                <div class="mb-4 col-md-8">
                                     <label>Journals</label>
                                     @foreach ($user->journals as $journal)
                                     <div class="form-group">
@@ -188,10 +150,10 @@ $helper= new Helper;
                                                 Description: {{ $journal->about }} <br />
                                             </div>
                                             <div class="btn-group">
-                                                <a href="{{ $journal->downloadLink }}" class="btn btn-success mr-2" title="Download journal">
+                                                <a href="{{ $journal->downloadLink }}" class="mr-2 btn btn-success" title="Download journal">
                                                     <i class="fa fa-download"></i> Download
                                                 </a>
-                                                <a href="{{ $journal->editLink }}" class="btn btn-primary edit mr-2" title="Edit journal">
+                                                <a href="{{ $journal->editLink }}" class="mr-2 btn btn-primary edit" title="Edit journal">
                                                     <i class="fa fa-edit"></i> Edit
                                                 </a>
                                                 <a href="{{ $journal->deleteLink }}" class="btn btn-warning" title="Delete journal">
@@ -212,7 +174,7 @@ $helper= new Helper;
 
 
                                 @if($user->address)
-                                <div class="col-md-8 mb-4">
+                                <div class="mb-4 col-md-8">
                                     <label>Address</label>
                                     <p>{{ $user->address->address}}</p>
                                     <p>{{ implode(',', [$user->address->city, $user->address->state, $user->address->country]) }}</p>
@@ -222,7 +184,7 @@ $helper= new Helper;
                                 </div>
                                 <div class="clearfix"></div>
                                 @endif
-                                <div class="col-md-8 mb-4">
+                                <div class="mb-4 col-md-8">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Email</label>
@@ -237,7 +199,7 @@ $helper= new Helper;
 
                                 @if($user->socialMediaHandles)
                                 <div class="clearfix"></div>
-                                <div class="col-md-8 mb-4">
+                                <div class="mb-4 col-md-8">
                                     <ul class="list-inline">
                                         @foreach ($user->socialMediaHandles as $socialMedia)
                                         <li>
@@ -256,6 +218,43 @@ $helper= new Helper;
                                 @endif
                             </div>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="user-timeline">
+                    <div class="timeline-post">
+                        <div class="post-content">
+                            <h2 class="line-head">Platforms</h2>
+                            <div class="row">
+                                @forelse ($items as $item)
+                                <div class="mb-4 col-md-6 col-lg-4 equalHeight">
+                                    <div class="widget-small primary coloured-icon">
+                                        @isset($item['image'])
+                                        <img src="{{ $item['image'] }}" alt="" class="icon img-responsive equalHeight" style="width:35%;">
+                                        @else
+                                        <i class="icon fa fa-users fa-3x equalHeight" style="width:35%;"></i>
+                                        @endisset
+                                        <div class="info">
+                                            <h4 style="text-transform: none;">{{ $item['title'] }}</h4>
+                                            <p><b>{!! $item['count'] !!}</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @empty
+                                <div class="col-md-12">
+                                    <p> You have not uploaded anything on any of our platforms.</p>
+                                </div>
+                                @endforelse
+                            </div>
+                            @if(count($charts) > 0)
+                            <div class="px-3 py-3 row">
+                                @foreach ($charts as $chart)
+                                <div class="col-md-6">
+                                    {!! $chart->container() !!}
+                                </div>
+                                @endforeach
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

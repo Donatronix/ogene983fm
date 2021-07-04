@@ -45,12 +45,12 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => file_exists(str_replace("ogene983fm", "public_html", base_path())) ? str_replace("ogene983fm", "public_html", base_path()) . '/media' : public_path('media'),
+            'root' => $_SERVER["DOCUMENT_ROOT"] . "/media",
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => file_exists(str_replace("ogene983fm", "public_html", base_path())) ? str_replace("ogene983fm", "public_html", base_path()) . '/media' : public_path('media'),
+            'root' => $_SERVER["DOCUMENT_ROOT"] . "/media",
             'url' => env('APP_URL') . '/media',
             'visibility' => 'public',
         ],

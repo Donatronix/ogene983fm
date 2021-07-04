@@ -15,16 +15,16 @@ Presenters
             <li class="breadcrumb-item"><a href="{{ route('presenter.dashboard') }}">Presenters</a></li>
         </ul>
     </div>
-   <div class="row">
-       <div class="col-md-6 col-lg-3 pull-right">
-           <p><a class="btn btn-primary icon-btn" href="{{ route('presenter.create') }}"><i class="fa fa-plus"></i>New Presenter </a></p>
-       </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-3 pull-right">
+            <p><a class="btn btn-primary icon-btn" href="{{ route('presenter.create') }}"><i class="fa fa-plus"></i>New Presenter </a></p>
+        </div>
 
-       @include('errors.list')
-   </div>
+        @include('errors.list')
+    </div>
     <div class="row">
         @forelse ($presenters as $presenter)
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="tile">
                 <div class="row">
                     <div class="col-md-4">
@@ -32,16 +32,17 @@ Presenters
                     </div>
                     <div class="col-md-8">
                         <div class="tile-title-w-btn">
-                            <h3 class="title">{{ ucwords($presenter->title) }}</h3>
+                            <h3 class="title">{{ ucwords($presenter->name) }}</h3>
                         </div>
                         <div class="tile-body">
-                            {!! nl2br($presenter->about) !!}
+                            {!! $presenter->about !!}
                         </div>
                     </div>
                 </div>
-                <div class="btn-group mt-2">
+                <div class="mt-2 btn-group">
                     {{-- <i class="btn btn-primary" href="#"><i class="fa fa-lg fa-plus"></i></i> --}}
                     <a class="btn btn-primary" href="{{ route('presenter.edit', ['presenter' => $presenter->slug]) }}"><i class="fa fa-lg fa-edit"></i></a>
+                    @role('admin')
                     <a class="btn btn-danger" href="{{ route('presenter.delete', ['presenter' => $presenter->slug]) }}" onclick="event.preventDefault();
                                                      document.getElementById('delete-form').submit();">
                         <i class="fa fa-lg fa-trash"></i>
@@ -50,7 +51,8 @@ Presenters
                         @csrf
                         @method('DELETE')
                     </form>
-               </div>
+                    @endrole
+                </div>
             </div>
         </div>
         @empty

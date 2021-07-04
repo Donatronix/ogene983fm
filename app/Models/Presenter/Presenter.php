@@ -87,17 +87,17 @@ class Presenter extends Model implements Searchable
         );
     }
 
-/**
- * Get programmes
- *
- * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
- */
-    public function programmes():BelongsToMany
+    /**
+     * Get programmes
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function programmes(): BelongsToMany
     {
         return $this->belongsToMany(Programme::class);
     }
 
-    public function getContentAttribute(
+    public function getContentAttribute()
     {
         return $this->about;
     }

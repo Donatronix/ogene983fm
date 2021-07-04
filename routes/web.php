@@ -46,5 +46,5 @@ Route::get('/clear-cache', function () {
 });
 
 Route::get('/test', function () {
-    echo str_replace("ogene983fm", "public_html", base_path());
+    dd($_SERVER['DOCUMENT_ROOT']);
 });

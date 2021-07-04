@@ -186,7 +186,7 @@ class ProgrammeController extends Controller
             $programme->title = $request->title;
 
             if ($programme->save()) {
-                $programme->saveAbout($request->description);
+                $programme->storeAbout($request->description);
                 if ($request->hasFile('cover_image')) {
                     $programme->updateImage($request->file('cover_image'));
                 }

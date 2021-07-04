@@ -119,7 +119,7 @@ class CategoryController extends Controller
                 $category->category_id = $validated['category_id'];
             }
             $category->save();
-            $category->saveAbout($validated['description']);
+            $category->storeAbout($validated['description']);
             if ($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
                 $category = Category::findOrFail($category->id);
                 $media = $category->getMedia('category');

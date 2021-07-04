@@ -48,8 +48,8 @@ class Image extends Model
     public function getImageAttribute($value)
     {
         if (file_exists(asset($value))) {
-            return asset($value);
+            return str_replace("/media//home2/ogenefmc/public_html/media", "", asset($value));
         }
-        return asset('media/' . $value);
+        return str_replace("/media//home2/ogenefmc/public_html/media", "", asset('media/' . $value));
     }
 }

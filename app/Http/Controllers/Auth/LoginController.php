@@ -56,7 +56,8 @@ class LoginController extends Controller
                 return redirect()->intended('/');
             }
         } catch (\Throwable $th) {
-            throw $th;
+            session()->flash('error', $th->getMessage());
+            return back();
         }
         //login failed...
         return redirect("/login");
@@ -67,7 +68,8 @@ class LoginController extends Controller
         try {
             Auth::logout(); // log the user out of our application
         } catch (\Throwable $th) {
-            throw $th;
+            session()->flash('error', $th->getMessage());
+            return back();
         }
         return redirect('/'); // redirect the user to the index page
     }

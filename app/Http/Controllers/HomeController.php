@@ -7,6 +7,7 @@ use App\Models\Gallery\Album;
 use App\Models\Post\Post;
 use App\Models\Programme\Programme;
 use App\Models\SongOfTheWeek\SongOfTheWeek;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +29,7 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-        return view('site.dashboard.index');
+        return view('site.dashboard.index', ['usersCount' => User::all()->count()]);
     }
 
     /**

@@ -19,7 +19,7 @@ class AdminMiddleware
     {
         $user = User::get();
         if ($user) {
-            $isAdmin = Auth::user()->isAdmin || Auth::user()->isSuperAdmin;
+            $isAdmin = Auth::user()->isAdmin || Auth::user()->isSuperAdmin || Auth::user()->isPresenter;
             if ($isAdmin === false) //If user does //not have this permission
             {
                 abort('401');

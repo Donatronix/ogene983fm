@@ -54,6 +54,7 @@ Programmes
                 </div>
                 <div class="mt-2 btn-group">
                     <a class="btn btn-primary" href="{{ route('programme.edit', ['programme' => $programme->slug]) }}"><i class="fa fa-lg fa-edit"></i></a>
+                    @role('admin')
                     <a class="btn btn-danger" href="{{ route('programme.delete', ['programme' => $programme->slug]) }}" onclick="event.preventDefault();
                                                      document.getElementById('delete-form').submit();">
                         <i class="fa fa-lg fa-trash"></i>
@@ -62,6 +63,7 @@ Programmes
                         @csrf
                         @method('DELETE')
                     </form>
+                    @endrole
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ New Presenter
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Presenters</li>
+            <li class="breadcrumb-item"><a href="{{ route('presenter.dashboard') }}">Presenters</a></li>
             <li class="breadcrumb-item">{{ $presenter->name }}</li>
             <li class="breadcrumb-item"><a href="">Edit</a></li>
         </ul>
@@ -65,6 +65,7 @@ New Presenter
 
                             <div class="tile-footer">
                                 <button class="btn btn-primary" type="submit">Update</button>
+                                <a class="btn btn-danger pull-right" href="{{ route('presenter.dashboard') }}">Cancel</a>
                             </div>
                         </form>
                     </div>
