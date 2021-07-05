@@ -55,21 +55,21 @@ PharmacyTherapon || Dashboard - Members
                                 <td>
                                     <ul class="list-inline list-unstyled">
                                         <li>
-                                            <a href="#" data-url={{ route('roles.edit.user',['user' => $user->slug]) }} class="edit_role btn btn-primary m-1">Roles</a>
+                                            <a href="#" data-url={{ route('roles.edit.user',['user' => $user->slug]) }} class="m-1 edit_role btn btn-primary">Roles</a>
                                         </li>
                                         <li>
-                                            <a href="#" data-url="{{ route('permissions.edit.user', ['user' => $user->slug]) }}" class="edit_permission btn btn-warning m-1">Permissions</a>
+                                            <a href="#" data-url="{{ route('permissions.edit.user', ['user' => $user->slug]) }}" class="m-1 edit_permission btn btn-warning">Permissions</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('user.profile', ['user'=> $user->slug]) }}" class="btn btn-info m-1">View Profile</a>
+                                            <a href="{{ route('user.profile', ['user'=> $user->slug]) }}" class="m-1 btn btn-info">View Profile</a>
                                         </li>
                                         @if (auth()->user()->isSuperAdmin && empty($user->email_verified_at))
                                         <li>
-                                            <a href="{{ route('user.verify', ['user'=> $user->slug]) }}" class="btn btn-secondary m-1">Verify User</a>
+                                            <a href="{{ route('user.verify', ['user'=> $user->slug]) }}" class="m-1 btn btn-secondary">Verify User</a>
                                         </li>
                                         @endif
                                         <li>
-                                            <a class="btn btn-danger m-1" href="{{ route('user.delete', ['user'=> $user->slug]) }}" onclick="event.preventDefault(); document.getElementById('delete-{{ $loop->iteration }}').submit();">
+                                            <a class="m-1 btn btn-danger" href="{{ route('user.delete', ['user'=> $user->slug]) }}" onclick="event.preventDefault(); document.getElementById('delete-{{ $loop->iteration }}').submit();">
                                                 {{ __('Delete') }}
                                             </a>
                                             <form id="delete-{{ $loop->iteration }}" action="{{ route('user.delete', ['user'=> $user->slug]) }}" method="POST" style="display: none;">
