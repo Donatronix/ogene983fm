@@ -16,7 +16,7 @@
         <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
         <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
         <meta property="og:description" content="Ogene983FM Best indigenous Radio Station, South-East of the Niger. Infusing Local content, reaching out to upwardly mobile and locals. Bridging the gap between the urban contemporary and Indigenous broadcasting">
-        <title>Ogene98.3FM Dashboard </title>
+        <title>Ogene98.3FM Dashboard @yield('title')</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">

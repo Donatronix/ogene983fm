@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.form-components')
 @section('title')
-New Programme
+Edit Programme
 @endsection
 
 @section('content')

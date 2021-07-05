@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.form-components')
 @section('title')
-New Presenter
+Edit Presenter
 @endsection
 
 @section('content')
