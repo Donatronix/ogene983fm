@@ -44,7 +44,7 @@ Programmes
                         </div>
                         <div class="tile-body">
                             {!! nl2br($programme->about) !!}<br>
-                            <strong>Days:</strong> {{ $time ? $time->implode('day', ', ') : null }} <br>
+                            <strong>Days:</strong> {{ $time ? ucwords($time->implode('day', ', ')) : null }} <br>
                             @php
                             $time=$time->first();
                             @endphp
