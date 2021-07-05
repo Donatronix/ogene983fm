@@ -421,12 +421,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\ogene983fm\\public\\media',
+        'root' => '/media',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\ogene983fm\\public\\media',
+        'root' => '/media',
         'url' => 'http://ogene983fm.test/media',
         'visibility' => 'public',
       ),
@@ -930,6 +930,7 @@
     array (
     ),
     'class_search_buffer' => 2500,
+    'action_comment_template' => 'microscope_package::action_comment',
   ),
   'livewire' => 
   array (
