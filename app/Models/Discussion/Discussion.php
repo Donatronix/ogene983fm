@@ -135,4 +135,12 @@ class Discussion extends Model implements Searchable
     {
         return $this->about;
     }
+
+    /**
+     * @return string
+     */
+    public function url(): string
+    {
+        return route('discussion.show', $this->slug);
+    }
 }

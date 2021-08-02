@@ -124,4 +124,12 @@ class Metro extends Model implements Searchable
     {
         return $this->belongsTo(Category::class);
     }
+
+    /**
+     * @return string
+     */
+    public function url(): string
+    {
+        return route('metro.show', $this->slug);
+    }
 }

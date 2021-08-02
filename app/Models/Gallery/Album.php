@@ -78,7 +78,7 @@ class Album extends Model implements Searchable
      *
      * @return string
      */
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
@@ -101,5 +101,13 @@ class Album extends Model implements Searchable
     public function albumUploads()
     {
         return $this->hasMany('App\Models\Gallery\AlbumUpload', 'album_id');
+    }
+
+    /**
+     * @return string
+     */
+    public function url(): string
+    {
+        return route('gallery.album.show', $this->slug);
     }
 }

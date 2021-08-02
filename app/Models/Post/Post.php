@@ -56,6 +56,9 @@ class Post extends Model implements Searchable
     use Taggable;
     use UploadImage;
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'id',
         'user_id',
@@ -81,11 +84,14 @@ class Post extends Model implements Searchable
      *
      * @return string
      */
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
 
+    /**
+     * @return SearchResult
+     */
     public function getSearchResult(): SearchResult
     {
         $url = route('post.show', $this->slug);
@@ -96,20 +102,38 @@ class Post extends Model implements Searchable
         );
     }
 
-    public function author()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo('App\Models\Presenter\Presenter');
     }
 
-    public function category()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo('App\Models\Category\Category');
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeMyPosts($query)
     {
         return $query->whereHas('users', function ($query) {
             $query->where('users.id', Auth::user()->id);
         });
+    }
+
+    /**
+     * @return string
+     */
+    public function url(): string
+    {
+        return route('post.show', $this->slug);
     }
 }

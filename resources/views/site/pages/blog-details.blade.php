@@ -61,8 +61,8 @@
                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ $blog->url }}"><i class="fa fa-facebook"></i></a>
                                 <a href="https://twitter.com/intent/tweet?text={{ urlencode($blog->title) }}&url={{ $blog->url }}"><i class="fa fa-twitter"></i></a>
                                 <a href="https://wa.me/?text={{ $blog->url }}"><i class="fa fa-whatsapp"></i></a>
-                                <a href="{{ $blog->googlePlusShare }}"><i class="fa fa-google-plus"></i></a>
-                                <a href="{{ $blog->instagramShare }}"><i class="fa fa-instagram"></i></a>
+{{--                                <a href="{{ $blog->googlePlusShare }}"><i class="fa fa-google-plus"></i></a>--}}
+{{--                                <a href="{{ $blog->instagramShare }}"><i class="fa fa-instagram"></i></a>--}}
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
                                 <a class="copyUrl" href="#" title="Copy Url to clipboard"><i class="fa fa-copy"></i></a>
                             </div>

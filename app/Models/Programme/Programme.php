@@ -188,7 +188,6 @@ class Programme extends Model implements Searchable
         });
     }
 
-
     /**
      * Get programme about
      *
@@ -197,5 +196,13 @@ class Programme extends Model implements Searchable
     public function getContentAttribute()
     {
         return $this->about;
+    }
+
+    /**
+     * @return string
+     */
+    public function url(): string
+    {
+        return route('programme.show', $this->slug);
     }
 }

@@ -101,4 +101,12 @@ class Presenter extends Model implements Searchable
     {
         return $this->about;
     }
+
+    /**
+     * @return string
+     */
+    public function url(): string
+    {
+        return route('post.show', $this->slug);
+    }
 }
