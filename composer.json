@@ -14,7 +14,7 @@
         "consoletvs/charts": "^7.2",
         "cyrildewit/eloquent-viewable": "*",
         "doctrine/dbal": "^2.9",
-        "dompdf/dompdf": "^0.8.3",
+        "dompdf/dompdf": "^1.2.1",
         "donatello-za/rake-php-plus": "^1.0",
         "fideloper/proxy": "^4.4",
         "friendsofphp/php-cs-fixer": "^2.15",
